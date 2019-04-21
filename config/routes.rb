@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :users
 
   root :to => 'sessions#new'
-
-  post '/login',   to: 'sessions#create', as: :log_in
+  get '/users/:id' => 'users#show', as: :user_path
+  post '/login' => 'sessions#create', as: :log_in
   delete '/log_out' => 'sessions#destroy', as: :log_out
 
   get '/sign_in' => 'registrations#new', as: :registrations
