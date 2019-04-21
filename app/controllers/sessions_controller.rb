@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		password = params[:session][:password]
 		if user && user[:password] == password
 			log_in user
-			redirect_to "/users/:id"
+			redirect_to "/users/#{user[:id]}"
 			flash[:notice] = "Welcome to my empire!"
 		else
 			flash.now[:notice] = "Try again"

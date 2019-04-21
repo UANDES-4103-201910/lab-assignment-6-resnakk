@@ -7,11 +7,19 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-	#complete this method
+    session = session[:user_id]
+    if session
+      @current_user ||= User.find(session)
+    end
   end
+
   def is_user_logged_in?
 	#complete this method
-  	logged_in = false
-	if logged_in then true else redirect_to root_path end 
+    logged_in = current_user
+  	if logged_in 
+      then true 
+    else 
+      redirect_to root_path 
+    end 
   end
 end
